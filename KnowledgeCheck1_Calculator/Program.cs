@@ -15,17 +15,19 @@ namespace KnowledgeCheck1_Calculator
 
             var input = Console.ReadLine();
             var calculator = new Calculator();
+            string Number1, Number2;
 
             switch (input)
             {
                 case "1":
                     Console.WriteLine("Enter 2 integers to add");
-                    var addNumber1 = Console.ReadLine();
-                    var addNumber2 = Console.ReadLine();
+                   
+                    Number(out Number1, out Number2);
 
-                    if (int.TryParse(addNumber1, out int addNumOne) && int.TryParse(addNumber2, out int addNumTwo))
+
+                    if (int.TryParse(Number1, out int addNumOne) && int.TryParse(Number2, out int addNumTwo))
                     {
-                        Console.Write($"{addNumber1} + {addNumber2} = ");
+                        Console.Write($"{Number1} + {Number2} = ");
                         Console.Write(calculator.Add(addNumOne, addNumTwo));
                     }
                     else
@@ -36,12 +38,12 @@ namespace KnowledgeCheck1_Calculator
 
                 case "2":
                     Console.WriteLine("Enter 2 integers to subtract");
-                    var subtractNumber1 = Console.ReadLine();
-                    var subtractNumber2 = Console.ReadLine();
+                   
+                    Number(out Number1, out Number2);
 
-                    if (int.TryParse(subtractNumber1, out int subNumOne) && int.TryParse(subtractNumber2, out int subNumTwo))
+                    if (int.TryParse(Number1, out int subNumOne) && int.TryParse(Number2, out int subNumTwo))
                     {
-                        Console.Write($"{subtractNumber1} - {subtractNumber2} = ");
+                        Console.Write($"{Number1} - {Number2} = ");
                         Console.Write(calculator.Subtract(subNumOne, subNumTwo));
                     }
                     else
@@ -52,16 +54,29 @@ namespace KnowledgeCheck1_Calculator
 
                 case "3":
                     // Add code here
+                    Console.WriteLine("Enter 2 integers to multiply");
+                    
+                    Number(out Number1, out Number2);
+
+                    if (int.TryParse(Number1, out int multiNumOne) && int.TryParse(Number2, out int multiNumTwo))
+                    {
+                        Console.Write($"{Number1} X {Number2} = ");
+                        Console.Write(calculator.Multiply(multiNumOne, multiNumTwo));
+                    }
+                    else
+                    {
+                        Console.WriteLine("One or more of the numbers is not an int");
+                    }
                     break;
 
                 case "4":
                     Console.WriteLine("Enter 2 integers to divide");
-                    var divideNumber1 = Console.ReadLine();
-                    var divideNumber2 = Console.ReadLine();
+                   
+                    Number(out Number1, out Number2);
 
-                    if (double.TryParse(divideNumber1, out double divNumOne) && double.TryParse(divideNumber2, out double divNumTwo))
+                    if (double.TryParse(Number1, out double divNumOne) && double.TryParse(Number2, out double divNumTwo))
                     {
-                        Console.Write($"{divideNumber1} / {divideNumber2} = ");
+                        Console.Write($"{Number1} / {Number2} = ");
                         Console.Write(calculator.Divide(divNumOne, divNumTwo));
                     }
                     else
@@ -69,12 +84,18 @@ namespace KnowledgeCheck1_Calculator
                         Console.WriteLine("One or more of the numbers is not an int");
                     }
                     break;
-                    break;
+                   
 
                 default:
                     Console.WriteLine("Unknown input");
                     break;
             }
+        }
+
+        private static void Number(out string Number1, out string Number2)
+        {
+            Number1 = Console.ReadLine();
+            Number2 = Console.ReadLine();
         }
     }
 }
